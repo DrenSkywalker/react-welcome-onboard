@@ -1,6 +1,6 @@
 <p align="center">
 <br/><br/>
-<img src="https://img-premium.flaticon.com/png/512/870/premium/870194.png?token=exp=1630536771~hmac=74068509e17bcfce1aafccc0e69bdc7b" width="150px">
+<img src="https://i.ibb.co/LJTFkkr/plane.png" width="150px">
 <br/><br/>
 </p>
 
