@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+<p align="center">
+<br/><br/>
+<img src="https://img-premium.flaticon.com/png/512/870/premium/870194.png?token=exp=1630536771~hmac=74068509e17bcfce1aafccc0e69bdc7b" width="150px">
+<br/><br/>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# <p align="center">Welcome Onboard!</p>
 
-## Available Scripts
+<p align="center">
+A cute and minimal "onboarding" library for React!
+<br/><br/>
+</p>
 
-In the project directory, you can run:
+## ⚙️ Installation
 
-### `npm start`
+```ruby
+$ npm i react-welcome-onboard
+$ yarn add react-welcome-onboard
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ✈️ Using _Welcome Onboard_
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```js
+import React from 'react';
+import {
+  Slider,
+  SlidesContainer,
+  SliderPagination,
+  Slide,
+  SlideHeader,
+  SlideTitle,
+  SlideContent,
+  SlideDescription,
+  SlideFooter,
+  Button,
+  Bullets,
+  ProgressBar
+} from "react-welcome-onboard";
 
-### `npm test`
+export default const App = () => {
+  const {
+    slide,
+    totalSlides,
+    incrementSlide,
+    decrementSlide,
+    jumpToSlide,
+  } = useSlider(1, 2);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  return (
+      <Slider slide={slide} totalSlides={totalSlides}>
+        <SlidesContainer>
+          <Slide>
+            <SlideHeader>
+              <SlideTitle>Title 1</SlideTitle>
+            </SlideHeader>
+            <SlideContent>
+              <SlideDescription>Description 1</SlideDescription>
+            </SlideContent>
+            <SlideFooter>Footer 1</SlideFooter>
+          </Slide>
 
-### `npm run build`
+          <Slide>
+            <SlideHeader>
+              <SlideTitle>Title 2</SlideTitle>
+            </SlideHeader>
+            <SlideContent>
+              <SlideDescription>Description 2</SlideDescription>
+            </SlideContent>
+            <SlideFooter>Footer 2</SlideFooter>
+          </Slide>
+        </SlidesContainer>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+        <SliderPagination>
+          <Button onClick={decrementSlide}>Prev</Button>
+          <Bullets jumpToSlide={jumpToSlide} />
+          <Button label="Next" onClick={incrementSlide} />
+          <ProgressBar />
+        </SliderPagination>
+      </Slider>
+  )
+}
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📚 All About the Modules
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ☁️ "useSlider" hook!
 
-### `npm run eject`
+Use the **useSlider** to determine the _initial_ slide and the _total_ slides inside your slider.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can also import the functions you need for the pagination:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **incrementSlide** and **decrementSlide**: they work together and can be used within the given _Button_ component to switch slide;
+- **jumpToSlide**: works alone within the given _Bullets_ component. This functions allows you to jump on a specific slide by clicking on its bullet.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### ☁️ Structure of "Slider"
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Slider** is the main component containing the structure.  
+Inside we can find:
 
-## Learn More
+#### SlidesContainer
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This component contains all of our **Slides**.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Slide
 
-### Code Splitting
+Each **Slide** can optionally contain a **SlideHeader**, a **SlideContent** and a **SlideFooter**.  
+Inside each of these components, can optionally be found a **SlideTitle** and a **SlideDescription**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### SliderPagination
 
-### Analyzing the Bundle Size
+This is the pagination component, which can contain two **Buttons** and / or the **Bullets**.  
+It can also optionally contain the **ProgressionBar**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Buttons
 
-### Making a Progressive Web App
+**Buttons** come with two different functions: _incrementSlide_ and _decrementSlide_.  
+These functions are mandatory to switch between slides.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Bullets
 
-### Advanced Configuration
+**Bullets** come with the _jumpToSlide_ functions which allows the user to jump to a specific slide.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### ProgressBar
 
-### Deployment
+This completely optional component simply shows the sliding progression.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## ✨ License and Special Thanks
 
-### `npm run build` fails to minify
+**Welcome Onboard** is released under the _MIT_ license, feel free to use it, share and modify.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+☁️ **Buttons** style inspiration from the beautiful [Chakra UI](https://github.com/chakra-ui/chakra-ui)
