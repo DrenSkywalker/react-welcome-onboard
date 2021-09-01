@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Button from "./components/Button/Button";
+import Bullets from "./components/Bullets/Bullets";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
+import Slider from "./components/Slider/Slider";
+import Slide from "./components/Slide/Slide";
+import SlidesContainer from "./components/SlidesContainer/SlidesContainer";
+import SlideHeader from "./components/SlideHeader/SlideHeader";
+import SlideContent from "./components/SlideContent/SlideContent";
+import SlideFooter from "./components/SlideFooter/SlideFooter";
+import SlideTitle from "./components/SlideTitle/SlideTitle";
+import SlideDescription from "./components/SlideDescription/SlideDescription";
+import SliderPagination from "./components/SliderPagination/SliderPagination";
+import { useSlider } from "./utils/index";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export {
+  Button,
+  Bullets,
+  ProgressBar,
+  Slider,
+  Slide,
+  SlidesContainer,
+  SlideHeader,
+  SlideContent,
+  SlideFooter,
+  SlideTitle,
+  SlideDescription,
+  SliderPagination,
+  useSlider,
+};
