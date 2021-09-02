@@ -48,6 +48,7 @@ const ProgressBar = (props) => {
           isFirst={index === props.totalSlides + 1 - props.totalSlides}
           isLast={index === props.totalSlides}
           isCurrent={index === props.slide}
+          className="progress-bar-item"
         />
       );
     }

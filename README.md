@@ -4,10 +4,18 @@
 <br/><br/>
 </p>
 
-# <p align="center">Welcome Onboard!</p>
+## <p align="center">☁️ Welcome Onboard! ☁️</p>
 
 <p align="center">
-A cute and minimal "onboarding" library for React!
+<a href="https://drenskywalker.github.io/react-welcome-onboard/"><img src="https://img.shields.io/badge/Try it out!-399AEA?style=flat"></a>
+<img src="https://img.shields.io/badge/Open%20Source-🤍-399AEA">
+<img src="https://img.shields.io/github/stars/DrenSkywalker/react-welcome-onboard?color=399AEA&label=Stars">
+<img src="https://img.shields.io/npm/dw/react-welcome-onboard?color=399AEA&label=Downloads">
+<img src="https://img.shields.io/github/license/DrenSkywalker/react-welcome-onboard?color=399AEA&label=License">
+</p>
+
+<p align="center">
+A cute and minimal <i>"onboarding"</i> library for React!
 <br/><br/>
 </p>
 
@@ -27,14 +35,7 @@ import {
   SlidesContainer,
   SliderPagination,
   Slide,
-  SlideHeader,
-  SlideTitle,
-  SlideContent,
-  SlideDescription,
-  SlideFooter,
   Button,
-  Bullets,
-  ProgressBar
 } from "react-welcome-onboard";
 
 export default const App = () => {
@@ -43,38 +44,18 @@ export default const App = () => {
     totalSlides,
     incrementSlide,
     decrementSlide,
-    jumpToSlide,
   } = useSlider(1, 2);
 
   return (
       <Slider slide={slide} totalSlides={totalSlides}>
         <SlidesContainer>
-          <Slide>
-            <SlideHeader>
-              <SlideTitle>Title 1</SlideTitle>
-            </SlideHeader>
-            <SlideContent>
-              <SlideDescription>Description 1</SlideDescription>
-            </SlideContent>
-            <SlideFooter>Footer 1</SlideFooter>
-          </Slide>
-
-          <Slide>
-            <SlideHeader>
-              <SlideTitle>Title 2</SlideTitle>
-            </SlideHeader>
-            <SlideContent>
-              <SlideDescription>Description 2</SlideDescription>
-            </SlideContent>
-            <SlideFooter>Footer 2</SlideFooter>
-          </Slide>
+          <Slide>Slide 1 content</Slide>
+          <Slide>Slide 2 content</Slide>
         </SlidesContainer>
 
         <SliderPagination>
-          <Button onClick={decrementSlide}>Prev</Button>
-          <Bullets jumpToSlide={jumpToSlide} />
+          <Button label="Prev" onClick={decrementSlide}/>
           <Button label="Next" onClick={incrementSlide} />
-          <ProgressBar />
         </SliderPagination>
       </Slider>
   )
@@ -85,9 +66,18 @@ export default const App = () => {
 
 ### ☁️ "useSlider" hook!
 
-Use the **useSlider** to determine the _initial_ slide and the _total_ slides inside your slider.
+Use the **useSlider** hook to handle the slider's state.
 
-You can also import the functions you need for the pagination:
+```js
+const { slide, totalSlides, incrementSlide, decrementSlide } = useSlider(1, 2);
+```
+
+This hook contains two arguments:
+
+- **initial slide**: the initial slide shown in the slider, in our example the slider begins with the first slide - 1;
+- **total slides**: a number rapresenting the total slides of our slider, in our example our slider contains a total slides of 2.
+
+**useSlider** allows to use functions needed for the pagination component:
 
 - **incrementSlide** and **decrementSlide**: they work together and can be used within the given _Button_ component to switch slide;
 - **jumpToSlide**: works alone within the given _Bullets_ component. This functions allows you to jump on a specific slide by clicking on its bullet.
@@ -103,18 +93,53 @@ This component contains all of our **Slides**.
 
 #### Slide
 
-Each **Slide** can optionally contain a **SlideHeader**, a **SlideContent** and a **SlideFooter**.  
+Each **Slide** can optionally contain:
+
+- a **SlideHeader**;
+- a **SlideContent**;
+- and a **SlideFooter**.
+
 Inside each of these components, can optionally be found a **SlideTitle** and a **SlideDescription**.
+
+```html
+<Slide>
+  <SlideHeader>
+    <SlideTitle>Title</SlideTitle>
+  </SlideHeader>
+  <SlideContent>
+    <SlideDescription>Description</SlideDescription>
+  </SlideContent>
+  <SlideFooter>Footer</SlideFooter>
+</Slide>
+```
 
 #### SliderPagination
 
-This is the pagination component, which can contain two **Buttons** and / or the **Bullets**.  
-It can also optionally contain the **ProgressionBar**.
+This is the pagination component, which can contain:
+
+- two **Buttons** and / or the **Bullets** component;
+- it can also optionally contain the **ProgressionBar**.
+
+```html
+<SliderPagination>
+  <button label="Prev" onClick="{decrementSlide}" />
+  <Bullets jumpToSlide="{jumpToSlide}" />
+  <button label="Next" onClick="{incrementSlide}" />
+  <ProgressBar />
+</SliderPagination>
+```
 
 #### Buttons
 
 **Buttons** come with two different functions: _incrementSlide_ and _decrementSlide_.  
 These functions are mandatory to switch between slides.
+
+You can attach a label or pass a content inside of them:
+
+```html
+<button onClick="{decrementSlide}">Prev</button>
+<button label="Next" onClick="{incrementSlide}" />
+```
 
 #### Bullets
 
@@ -123,6 +148,22 @@ These functions are mandatory to switch between slides.
 #### ProgressBar
 
 This completely optional component simply shows the sliding progression.
+
+## 🌈 Customize Everything
+
+Every component has its own _className_, so you can easily customize each module as you prefer.
+
+Here's a list of _classNames_ used:
+
+| Component          | ClassName         | Component         | ClassName         |
+| ------------------ | ----------------- | ----------------- | ----------------- |
+| `Slider`           | slider            | `SlideTitle`      | slide-title       |
+| `SlidesContainer`  | slides-container  | `SlideDescripton` | slide-description |
+| `SliderPagination` | slider-pagination | `Button`          | button            |
+| `Slide`            | slide             | `Bullets`         | bullets           |
+| `SlideHeader`      | slide-header      | `BulletItem`      | bullet            |
+| `SlideContent`     | slide-content     | `ProgressBar`     | progress-bar      |
+| `SlideFooter`      | slide-footer      | `ProgressBarItem` | progress-bar-item |
 
 ## ✨ License and Special Thanks
 
