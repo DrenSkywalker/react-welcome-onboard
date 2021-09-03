@@ -21,42 +21,13 @@ const ButtonStyled = styled.div`
         padding: 8px;
         border-radius: 5px;
       `}
-    ${(props) =>
-      props.isBullet &&
-      css`
-        width: 12px;
-        height: 12px;
-        padding: 0;
-        margin: 4px;
-        border-radius: 50px;
-      `}
-    ${(props) =>
-      props.isBullet &&
-      props.isCurrent &&
-      css`
-        background: rgba(66, 153, 225, 0.6);
-        box-shadow: none;
-      `}
   }
   &:hover {
     background: #e2e8f0;
-    ${(props) =>
-      props.isBullet &&
-      props.isCurrent &&
-      css`
-        background: rgba(66, 153, 225, 0.6);
-        box-shadow: none;
-      `}
   }
   &:active {
     background: #edf2f7;
     box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
-    ${(props) =>
-      props.isBullet &&
-      css`
-        background: rgba(66, 153, 225, 0.6);
-        box-shadow: none;
-      `}
   }
 `;
 
@@ -71,7 +42,7 @@ const IconStyled = styled.div`
 const Button = (props) => {
   return (
     <ButtonStyled
-      className={`button ${props.isBullet ? "bullet" : ""}`}
+      className={`button ${props.isIcon ? "icon" : ""}`}
       isIcon={props.isIcon}
       isBullet={props.isBullet}
       isCurrent={props.isCurrent}

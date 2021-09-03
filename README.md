@@ -74,10 +74,10 @@ const { slide, totalSlides, incrementSlide, decrementSlide } = useSlider(1, 2);
 
 This hook contains two arguments:
 
-- **initial slide**: the initial slide shown in the slider, in our example the slider begins with the first slide - 1;
-- **total slides**: a number rapresenting the total slides of our slider, in our example our slider contains a total slides of 2.
+- **initial slide**: the starting slide, in our example our slider begins with the first slide;
+- **total slides**: maximum slides present in the slider, in our example our slider contains a total slides of 2.
 
-**useSlider** allows to use functions needed for the pagination component:
+**useSlider** allows the user to use variaous functions for pagination:
 
 - **incrementSlide** and **decrementSlide**: they work together and can be used within the given _Button_ component to switch slide;
 - **jumpToSlide**: works alone within the given _Bullets_ component. This functions allows you to jump on a specific slide by clicking on its bullet.
@@ -99,7 +99,10 @@ Each **Slide** can optionally contain:
 - a **SlideContent**;
 - and a **SlideFooter**.
 
-Inside each of these components, can optionally be found a **SlideTitle** and a **SlideDescription**.
+Inside each of these components, can optionally be found
+
+- a **SlideTitle**;
+- and a **SlideDescription**.
 
 ```html
 <Slide>
@@ -115,7 +118,7 @@ Inside each of these components, can optionally be found a **SlideTitle** and a 
 
 #### SliderPagination
 
-This is the pagination component, which can contain:
+This is the pagination container, which can contain:
 
 - two **Buttons** and / or the **Bullets** component;
 - it can also optionally contain the **ProgressionBar**.
@@ -131,8 +134,7 @@ This is the pagination component, which can contain:
 
 #### Buttons
 
-**Buttons** come with two different functions: _incrementSlide_ and _decrementSlide_.  
-These functions are mandatory to switch between slides.
+**Buttons** come with two different functions: _incrementSlide_ and _decrementSlide_ used to switch between slides.
 
 You can attach a label or pass a content inside of them:
 
@@ -161,7 +163,7 @@ Here's a list of _classNames_ used:
 | `SlidesContainer`  | slides-container  | `SlideDescripton` | slide-description |
 | `SliderPagination` | slider-pagination | `Button`          | button            |
 | `Slide`            | slide             | `Bullets`         | bullets           |
-| `SlideHeader`      | slide-header      | `BulletItem`      | bullet            |
+| `SlideHeader`      | slide-header      | `BulletItem`      | bullet-item       |
 | `SlideContent`     | slide-content     | `ProgressBar`     | progress-bar      |
 | `SlideFooter`      | slide-footer      | `ProgressBarItem` | progress-bar-item |
 
