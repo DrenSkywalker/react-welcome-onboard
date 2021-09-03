@@ -36,6 +36,7 @@ import {
   SliderPagination,
   Slide,
   Button,
+  useSlider
 } from "react-welcome-onboard";
 
 export default const App = () => {
@@ -123,11 +124,11 @@ This is the pagination container, which can contain:
 - two **Buttons** and / or the **Bullets** component;
 - it can also optionally contain the **ProgressionBar**.
 
-```html
+```js
 <SliderPagination>
-  <button label="Prev" onClick="{decrementSlide}" />
+  <Button label="Prev" onClick="{decrementSlide}" />
   <Bullets jumpToSlide="{jumpToSlide}" />
-  <button label="Next" onClick="{incrementSlide}" />
+  <Button label="Next" onClick="{incrementSlide}" />
   <ProgressBar />
 </SliderPagination>
 ```
@@ -138,9 +139,9 @@ This is the pagination container, which can contain:
 
 You can attach a label or pass a content inside of them:
 
-```html
-<button onClick="{decrementSlide}">Prev</button>
-<button label="Next" onClick="{incrementSlide}" />
+```js
+<Button onClick="{decrementSlide}">Prev</Button>
+<Button label="Next" onClick="{incrementSlide}" />
 ```
 
 #### Bullets

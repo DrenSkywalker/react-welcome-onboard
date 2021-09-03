@@ -44,8 +44,6 @@ const Button = (props) => {
     <ButtonStyled
       className={`button ${props.isIcon ? "icon" : ""}`}
       isIcon={props.isIcon}
-      isBullet={props.isBullet}
-      isCurrent={props.isCurrent}
       onClick={props.onClick}
     >
       {props.label !== undefined ? (

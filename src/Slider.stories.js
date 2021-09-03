@@ -30,7 +30,7 @@ const Template = (props) => {
     const slides = [];
     for (let index = 1; index <= numberOfSlides; index++) {
       slides.push(
-        <Slide>
+        <Slide key={index}>
           <SlideHeader>
             <SlideTitle>Title {index}</SlideTitle>
           </SlideHeader>

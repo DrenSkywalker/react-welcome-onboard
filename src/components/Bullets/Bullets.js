@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import Button from "../Button/Button";
 
 const BulletStyled = styled.div`
   display: flex;
