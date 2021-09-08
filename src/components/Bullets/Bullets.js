@@ -50,7 +50,7 @@ const Bullets = (props) => {
           key={index}
           isCurrent={index === props.slide}
           onClick={() => props.jumpToSlide(index)}
-          className="bullet-item"
+          className="slider-bullet-item"
         />
       );
     }
@@ -58,7 +58,11 @@ const Bullets = (props) => {
     return bullets;
   };
 
-  return <BulletStyled className="bullets">{renderBullets()}</BulletStyled>;
+  return (
+    <BulletStyled className="slider-bullets-container">
+      {renderBullets()}
+    </BulletStyled>
+  );
 };
 
 export default Bullets;

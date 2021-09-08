@@ -17,3 +17,30 @@ export const useSlider = (initialSlide, totalSlides) => {
 
   return { slide, totalSlides, jumpToSlide, incrementSlide, decrementSlide };
 };
+
+export const usePreferences = (preferences) => {
+  const [preferencesList, setPreferencesList] = useState(
+    preferences.map((preference) => ({
+      ...preference,
+      isClicked: false,
+    }))
+  );
+
+  const setPreference = (preference, isClicked) => {
+    setPreferencesList(
+      preferencesList.map((pref) =>
+        pref.value === preference.value
+          ? {
+              ...pref,
+              isClicked: isClicked,
+            }
+          : {
+              ...pref,
+              isClicked: pref.isClicked,
+            }
+      )
+    );
+  };
+
+  return { preferencesList, setPreference };
+};

@@ -42,14 +42,14 @@ const IconStyled = styled.div`
 const Button = (props) => {
   return (
     <ButtonStyled
-      className={`button ${props.isIcon ? "icon" : ""}`}
+      className={`slider-button ${props.isIcon ? "icon" : ""}`}
       isIcon={props.isIcon}
       onClick={props.onClick}
     >
       {props.label !== undefined ? (
         props.label
       ) : props.children !== undefined && props.isIcon ? (
-        <IconStyled className="button-icon">{props.children}</IconStyled>
+        <IconStyled className="slider-button-icon">{props.children}</IconStyled>
       ) : (
         props.children
       )}

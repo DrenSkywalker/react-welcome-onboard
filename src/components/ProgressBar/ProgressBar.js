@@ -69,14 +69,14 @@ const ProgressBar = (props) => {
   }, [props.slide]);
 
   return (
-    <ProgressBarStyled className="progress-bar">
+    <ProgressBarStyled className="slider-progressbar">
       <ProgressBarItemStyled
         setWidth={`calc(100% / ${props.totalSlides})`}
         isFirst={props.slide === 1}
         isLast={props.slide === props.totalSlides}
         translate={translate}
         transition={transition}
-        className="progress-bar-item"
+        className="slider-progressbar-item"
       />
     </ProgressBarStyled>
   );
