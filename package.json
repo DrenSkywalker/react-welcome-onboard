@@ -2,7 +2,7 @@
   "homepage": "https://github.com/DrenSkywalker/react-welcome-onboard",
   "name": "react-welcome-onboard",
   "main": "dist/index.js",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "private": false,
   "files": [
     "dist",
