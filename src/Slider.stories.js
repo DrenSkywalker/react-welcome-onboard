@@ -17,7 +17,7 @@ import { useSlider, usePreferences } from "./utils/index";
 export default { title: "Examples" };
 
 const Template = (props) => {
-  const { numberOfSlides } = props;
+  const { numberOfSlides, isSliderVertical, isProgressBarVertical } = props;
 
   const {
     slide,
@@ -86,21 +86,37 @@ const Template = (props) => {
         position: "absolute",
         top: "50%",
         left: "50%",
+        display: "flex",
+        gap: "20px",
         transform: "translate(-50%, -50%)",
       }}
     >
-      <Slider slide={slide} totalSlides={totalSlides}>
+      <Slider
+        slide={slide}
+        totalSlides={totalSlides}
+        isSliderVertical={isSliderVertical}
+      >
         <SlidesContainer>{renderSlides()}</SlidesContainer>
         <SliderPagination>
           <Button onClick={decrementSlide}>Prev</Button>
           <Bullets jumpToSlide={jumpToSlide} />
           <Button label="Next" onClick={incrementSlide} />
-          <ProgressBar />
         </SliderPagination>
+        <ProgressBar isProgressBarVertical={isProgressBarVertical} />
       </Slider>
     </div>
   );
 };
 
+/*
+
+
+
+*/
+
 export const WelcomeOnboard = Template.bind({});
-WelcomeOnboard.args = { numberOfSlides: 4 };
+WelcomeOnboard.args = {
+  numberOfSlides: 3,
+  isSliderVertical: false,
+  isProgressBarVertical: false,
+};

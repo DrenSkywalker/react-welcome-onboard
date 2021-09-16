@@ -1,7 +1,7 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const ButtonStyled = styled.div`
+const ButtonStyled = styled.button`
   & {
     padding: 8px 16px;
     border: none;
@@ -13,14 +13,13 @@ const ButtonStyled = styled.div`
     font-family: "Inter", sans-serif;
     cursor: pointer;
     transition: 250ms background ease;
-    ${(props) =>
-      props.isIcon &&
-      css`
-        max-width: 36px;
-        max-height: 36px;
-        padding: 8px;
-        border-radius: 5px;
-      `}
+
+    &.icon {
+      max-width: 36px;
+      max-height: 36px;
+      padding: 8px;
+      border-radius: 5px;
+    }
   }
   &:hover {
     background: #e2e8f0;
@@ -49,7 +48,9 @@ const Button = (props) => {
       {props.label !== undefined ? (
         props.label
       ) : props.children !== undefined && props.isIcon ? (
-        <IconStyled className="slider-button-icon">{props.children}</IconStyled>
+        <IconStyled className={`slider-button-icon`}>
+          {props.children}
+        </IconStyled>
       ) : (
         props.children
       )}

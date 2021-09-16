@@ -1,15 +1,33 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const SlideStyled = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  & {
+    width: 100%;
+    height: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    &.vertical {
+      height: calc((100% / ${(props) => props.totalSlides}) - 80px);
+      margin-bottom: 80px;
+    }
+  }
 `;
 
 const Slide = (props) => {
-  return <SlideStyled className="slide">{props.children}</SlideStyled>;
+  const { totalSlides, isSliderVertical } = props;
+
+  return (
+    <SlideStyled
+      className={`slide ${isSliderVertical ? "vertical" : ""}`}
+      totalSlides={totalSlides}
+      isSliderVertical={isSliderVertical}
+    >
+      {props.children}
+    </SlideStyled>
+  );
 };
 
 export default Slide;

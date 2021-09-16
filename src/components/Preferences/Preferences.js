@@ -21,12 +21,10 @@ const PreferenceStyled = styled.div`
     font-family: "Inter", sans-serif;
     cursor: pointer;
     transition: 250ms background ease;
-    ${(props) =>
-      props.isClicked &&
-      css`
-        background: #edf2f7;
-        box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
-      `}
+
+    &.clicked {
+      box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+    }
   }
   &:hover {
     background: #e2e8f0;
@@ -49,7 +47,9 @@ const Preference = (props) => {
     <PreferenceStyled
       onClick={() => setButtonClicked()}
       isClicked={preference.isClicked}
-      className="slider-preference-item"
+      className={`slider-preference-item ${
+        preference.isClicked ? "clicked" : ""
+      }`}
     >
       {preference.label}
     </PreferenceStyled>
@@ -60,7 +60,7 @@ const Preferences = (props) => {
   const { preferences, setPreference } = props;
 
   return (
-    <PreferencesStyled className="slider-preferences-container">
+    <PreferencesStyled className={`slider-preferences-container`}>
       {preferences.map((preference, i) => (
         <Preference
           key={i}

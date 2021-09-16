@@ -1,79 +1,71 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled, { css } from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import utils from "./../../utils/utils";
 
 const ProgressBarStyled = styled.div`
-  width: 100%;
-  height: 6px;
-  flex-shrink: 1;
-  background: #edf2f7;
-  border-radius: 5px;
-`;
-
-const ProgressBarItemStyled = styled.div`
   & {
-    width: ${(props) => props.setWidth};
+    width: 100%;
     height: 6px;
-    border: none;
-    background: rgba(66, 153, 225, 0.6);
-    transform: translateX(${(props) => props.translate});
-    transition: transform ease-out ${(props) => props.transition}s;
-    ${(props) =>
-      props.isFirst &&
-      css`
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-      `}
-    ${(props) =>
-      props.isLast &&
-      css`
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-      `}
+    flex-shrink: 1;
+    position: absolute;
+    bottom: 0;
+    background: #edf2f7;
+
+    &.vertical {
+      width: 6px;
+      height: 100%;
+      top: 0;
+      right: 0;
+    }
   }
 `;
 
-const usePrevious = (value) => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
-};
+const ProgressBarItemStyled = styled.div`
+  width: ${(props) => props.setWidth};
+  height: ${(props) => props.setHeight};
+  border: none;
+  background: rgba(66, 153, 225, 0.6);
+  transform: ${(props) => props.translate};
+  transition: transform ease-out ${(props) => props.transition}s;
+`;
 
 const ProgressBar = (props) => {
+  const { slide, totalSlides, isProgressBarVertical } = props;
+
   const [animate, setAnimate] = useState({
-    translate: 0,
+    translate: !isProgressBarVertical ? "translateX(0)" : "translateY(0)",
     transition: 0.45,
   });
   const { translate, transition } = animate;
-  const prevProgressBarItem = usePrevious(props.slide);
+
+  const prev = utils.usePrevious(slide);
 
   useEffect(() => {
-    if (prevProgressBarItem !== props.slide) {
-      if (props.slide === 1) {
-        return setAnimate((animate) => ({ ...animate, translate: 0 }));
-      }
-      if (props.slide > prevProgressBarItem) {
-        return setAnimate((animate) => ({
-          ...animate,
-          translate: `calc((100% * (${props.slide} - 1)))`,
-        }));
-      }
-      if (props.slide < prevProgressBarItem) {
-        return setAnimate((animate) => ({
-          ...animate,
-          translate: `calc((100% * (${props.slide} - 1)))`,
-        }));
-      }
-    }
-  }, [props.slide]);
+    let translate = !isProgressBarVertical ? "translateX" : "translateY";
+    utils.handleTranslate(
+      prev,
+      slide,
+      totalSlides,
+      translate,
+      setAnimate,
+      false
+    );
+  }, [slide]);
 
   return (
-    <ProgressBarStyled className="slider-progressbar">
+    <ProgressBarStyled
+      className={`slider-progressbar ${
+        isProgressBarVertical ? "vertical" : ""
+      }`}
+      isProgressBarVertical={isProgressBarVertical}
+    >
       <ProgressBarItemStyled
-        setWidth={`calc(100% / ${props.totalSlides})`}
-        isFirst={props.slide === 1}
-        isLast={props.slide === props.totalSlides}
+        setWidth={
+          !isProgressBarVertical ? `calc(100% / ${totalSlides})` : `100%`
+        }
+        setHeight={
+          !isProgressBarVertical ? `100%` : `calc(100% / ${totalSlides})`
+        }
         translate={translate}
         transition={transition}
         className="slider-progressbar-item"

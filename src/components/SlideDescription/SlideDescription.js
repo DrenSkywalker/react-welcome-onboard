@@ -9,7 +9,7 @@ const SlideDescriptionStyled = styled.div`
 
 const SlideDescription = (props) => {
   return (
-    <SlideDescriptionStyled className="slide-description">
+    <SlideDescriptionStyled className={`slide-description`}>
       {props.children}
     </SlideDescriptionStyled>
   );

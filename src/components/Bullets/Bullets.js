@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const BulletStyled = styled.div`
   display: flex;
@@ -19,21 +19,19 @@ const BulletItemStyled = styled.div`
     background: #edf2f7;
     cursor: pointer;
     transition: 250ms background ease;
-    ${(props) =>
-      props.isCurrent &&
-      css`
-        background: rgba(66, 153, 225, 0.6);
-        box-shadow: none;
-      `}
+
+    &.current {
+      background: rgba(66, 153, 225, 0.6);
+      box-shadow: none;
+    }
   }
   &:hover {
     background: #e2e8f0;
-    ${(props) =>
-      props.isCurrent &&
-      css`
-        background: rgba(66, 153, 225, 0.6);
-        box-shadow: none;
-      `}
+
+    &.current {
+      background: rgba(66, 153, 225, 0.6);
+      box-shadow: none;
+    }
   }
   &:active {
     background: rgba(66, 153, 225, 0.6);
@@ -50,7 +48,9 @@ const Bullets = (props) => {
           key={index}
           isCurrent={index === props.slide}
           onClick={() => props.jumpToSlide(index)}
-          className="slider-bullet-item"
+          className={`slider-bullet-item ${
+            index === props.slide ? "current" : ""
+          }`}
         />
       );
     }
@@ -59,7 +59,7 @@ const Bullets = (props) => {
   };
 
   return (
-    <BulletStyled className="slider-bullets-container">
+    <BulletStyled className={`slider-bullets-container`}>
       {renderBullets()}
     </BulletStyled>
   );

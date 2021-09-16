@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SlideHeaderStyled = styled.div`
+const SlideHeaderStyled = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@ const SlideHeaderStyled = styled.div`
 
 const SlideHeader = (props) => {
   return (
-    <SlideHeaderStyled className="slide-header">
+    <SlideHeaderStyled className={`slide-header`}>
       {props.children}
     </SlideHeaderStyled>
   );

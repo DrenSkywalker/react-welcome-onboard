@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SlideFooterStyled = styled.div`
+const SlideFooterStyled = styled.footer`
   display: flex;
   justify-content: center;
   padding: 15px;
@@ -9,7 +9,7 @@ const SlideFooterStyled = styled.div`
 
 const SlideFooter = (props) => {
   return (
-    <SlideFooterStyled className="slide-footer">
+    <SlideFooterStyled className={`slide-footer`}>
       {props.children}
     </SlideFooterStyled>
   );
